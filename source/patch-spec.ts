@@ -24,7 +24,7 @@ const subscribable: Subscribable<number> = {
 
 describe("patch", () => {
   describe("without Symbol.observable", () => {
-    it("should be compatible with from", () => {
+    it("should patch an object", () => {
       expect(Symbol.observable).to.be.undefined;
       const interop = {
         [Symbol.observable](): Subscribable<number> {
@@ -35,7 +35,7 @@ describe("patch", () => {
       Rx.from(interop).subscribe(value => expect(value).to.equal(42));
     });
 
-    it("should support classes", () => {
+    it("should patch a class instance", () => {
       expect(Symbol.observable).to.be.undefined;
       class Interop {
         constructor() {
@@ -47,35 +47,8 @@ describe("patch", () => {
       }
       Rx.from(new Interop()).subscribe(value => expect(value).to.equal(42));
     });
-  });
 
-  describe("with Symbol.observable", () => {
-    let symbol: Symbol;
-
-    beforeEach(() => {
-      symbol = Symbol.observable;
-      (Symbol as any).observable = Rx.observable;
-    });
-
-    it("should be compatible with from", () => {
-      const interop = {
-        [Symbol.observable](): Subscribable<number> {
-          return subscribable;
-        }
-      };
-      patch(interop);
-      Rx.from(interop).subscribe(value => expect(value).to.equal(42));
-    });
-
-    afterEach(() => {
-      (Symbol as any).observable = symbol;
-    });
-  });
-});
-
-describe("patchPrototype", () => {
-  describe("without Symbol.observable", () => {
-    it("should be compatible with from", () => {
+    it("should patch a class", () => {
       expect(Symbol.observable).to.be.undefined;
       class Interop {
         [Symbol.observable](): Subscribable<number> {
@@ -95,7 +68,29 @@ describe("patchPrototype", () => {
       (Symbol as any).observable = Rx.observable;
     });
 
-    it("should be compatible with from", () => {
+    it("should patch an object", () => {
+      const interop = {
+        [Symbol.observable](): Subscribable<number> {
+          return subscribable;
+        }
+      };
+      patch(interop);
+      Rx.from(interop).subscribe(value => expect(value).to.equal(42));
+    });
+
+    it("should patch a class instance", () => {
+      class Interop {
+        constructor() {
+          patch(this);
+        }
+        [Symbol.observable](): Subscribable<number> {
+          return subscribable;
+        }
+      }
+      Rx.from(new Interop()).subscribe(value => expect(value).to.equal(42));
+    });
+
+    it("should patch a class", () => {
       class Interop {
         [Symbol.observable](): Subscribable<number> {
           return subscribable;
