@@ -6,16 +6,16 @@
 import { observable } from "./symbols";
 import { InteropObservable } from "./types";
 
-export function patch<T>(interop: InteropObservable<T>): void {
+export function patch(interop: InteropObservable<any>): void {
   if (!Symbol.observable) {
     (interop as any)[observable] = interop[Symbol.observable];
     delete interop[Symbol.observable];
   }
 }
 
-export function patchPrototype<
-  C extends new (...args: any[]) => InteropObservable<any>
->(ctor: C) {
+export function patchPrototype(
+  ctor: new (...args: any[]) => InteropObservable<any>
+) {
   if (!Symbol.observable) {
     (ctor.prototype as any)[observable] = ctor.prototype[Symbol.observable];
     delete ctor.prototype[Symbol.observable];
