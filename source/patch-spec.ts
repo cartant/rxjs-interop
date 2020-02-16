@@ -6,7 +6,7 @@
 
 import { expect } from "chai";
 import * as Rx from "rxjs";
-import { patch, patchPrototype } from "./patch";
+import { patch } from "./patch";
 import { toObserver } from "./to-observer";
 import { PartialObserver, Subscribable } from "./types";
 
@@ -82,7 +82,7 @@ describe("patchPrototype", () => {
           return subscribable;
         }
       }
-      patchPrototype(Interop);
+      patch(Interop);
       Rx.from(new Interop()).subscribe(value => expect(value).to.equal(42));
     });
   });
@@ -101,7 +101,7 @@ describe("patchPrototype", () => {
           return subscribable;
         }
       }
-      patchPrototype(Interop);
+      patch(Interop);
       Rx.from(new Interop()).subscribe(value => expect(value).to.equal(42));
     });
 

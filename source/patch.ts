@@ -6,18 +6,20 @@
 import { observable } from "./symbols";
 import { InteropObservable } from "./types";
 
-export function patch(instance: InteropObservable<any>): void {
+export function patch(instance: InteropObservable<any>): void;
+export function patch(
+  constructor: new (...args: any[]) => InteropObservable<any>
+): void;
+export function patch(
+  arg: InteropObservable<any> | (new (...args: any[]) => InteropObservable<any>)
+): void {
   if (!Symbol.observable) {
-    (instance as any)[observable] = instance[Symbol.observable];
-    delete instance[Symbol.observable];
-  }
-}
-
-export function patchPrototype(
-  ctor: new (...args: any[]) => InteropObservable<any>
-) {
-  if (!Symbol.observable) {
-    (ctor.prototype as any)[observable] = ctor.prototype[Symbol.observable];
-    delete ctor.prototype[Symbol.observable];
+    if (typeof arg === "function" && arg.prototype[Symbol.observable]) {
+      (arg.prototype as any)[observable] = arg.prototype[Symbol.observable];
+      delete arg.prototype[Symbol.observable];
+    } else {
+      (arg as any)[observable] = arg[Symbol.observable];
+      delete arg[Symbol.observable];
+    }
   }
 }
