@@ -6,11 +6,6 @@
 import { Observer, PartialObserver } from "./types";
 
 const noop = () => {};
-const noopObserver = {
-  complete: noop,
-  error: noop,
-  next: noop
-};
 
 export function toObserver<T>(
   nextOrObserver?: PartialObserver<T> | ((value: T) => void) | null,
@@ -26,16 +21,14 @@ export function toObserver<T>(
       return nextOrObserver as Observer<T>;
     }
     return {
-      complete: (nextOrObserver.complete || noopObserver.complete).bind(
-        nextOrObserver
-      ),
-      error: (nextOrObserver.error || noopObserver.error).bind(nextOrObserver),
-      next: (nextOrObserver.next || noopObserver.next).bind(nextOrObserver)
+      complete: (nextOrObserver.complete || noop).bind(nextOrObserver),
+      error: (nextOrObserver.error || noop).bind(nextOrObserver),
+      next: (nextOrObserver.next || noop).bind(nextOrObserver)
     };
   }
   return {
-    complete: complete || noopObserver.complete,
-    error: error || noopObserver.error,
-    next: nextOrObserver || noopObserver.next
+    complete: complete || noop,
+    error: error || noop,
+    next: nextOrObserver || noop
   };
 }
