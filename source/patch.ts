@@ -6,10 +6,10 @@
 import { observable } from "./symbols";
 import { InteropObservable } from "./types";
 
-export function patch(interop: InteropObservable<any>): void {
+export function patch(instance: InteropObservable<any>): void {
   if (!Symbol.observable) {
-    (interop as any)[observable] = interop[Symbol.observable];
-    delete interop[Symbol.observable];
+    (instance as any)[observable] = instance[Symbol.observable];
+    delete instance[Symbol.observable];
   }
 }
 
