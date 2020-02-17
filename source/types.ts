@@ -24,7 +24,7 @@ export type PartialObserver<T> = Partial<Observer<T>> &
 export type Subscribable<T> = {
   subscribe(observer?: PartialObserver<T>): Unsubscribable;
   subscribe(
-    next?: ((value: number) => void) | null,
+    next?: ((value: T) => void) | null,
     error?: ((error: any) => void) | null,
     complete?: (() => void) | null
   ): Unsubscribable;
