@@ -6,13 +6,13 @@
 import { observable } from "./symbols";
 import { InteropObservable } from "./types";
 
-export function patch(instance: InteropObservable<any>): void;
-export function patch(
-  constructor: new (...args: any[]) => InteropObservable<any>
-): void;
+export function patch<T>(instance: InteropObservable<T>): InteropObservable<T>;
+export function patch<T extends new (...args: any[]) => InteropObservable<any>>(
+  constructor: T
+): T;
 export function patch(
   arg: InteropObservable<any> | (new (...args: any[]) => InteropObservable<any>)
-): void {
+): InteropObservable<any> | (new (...args: any[]) => InteropObservable<any>) {
   if (!Symbol.observable) {
     if (typeof arg === "function" && arg.prototype[Symbol.observable]) {
       (arg.prototype as any)[observable] = arg.prototype[Symbol.observable];
@@ -22,4 +22,5 @@ export function patch(
       delete arg[Symbol.observable];
     }
   }
+  return arg;
 }
