@@ -20,7 +20,7 @@
     "rxjs": "^6.5.4",
     "tslint": "^6.0.0",
     "tslint-etc": "^1.5.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.8.2"
   },
   "es2015": "./dist/esm2015/index.js",
   "homepage": "https://github.com/cartant/rxjs-interop",
