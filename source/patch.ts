@@ -6,7 +6,7 @@
 import { observable } from "./symbols";
 import { InteropObservable } from "./types";
 
-export function patch<T>(instance: InteropObservable<T>): InteropObservable<T>;
+export function patch<T extends InteropObservable<any>>(instance: T): T;
 export function patch<T extends new (...args: any[]) => InteropObservable<any>>(
   constructor: T
 ): T;
