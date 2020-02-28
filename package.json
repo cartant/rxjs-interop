@@ -22,7 +22,9 @@
     "tslint-etc": "^1.5.1",
     "typescript": "~3.8.2"
   },
-  "es2015": "./dist/esm2015/index.js",
+  "exports": {
+    ".": "./dist/esm/index.js"
+  },
   "homepage": "https://github.com/cartant/rxjs-interop",
   "husky": {
     "hooks": {
@@ -41,8 +43,8 @@
       "git add"
     ]
   },
-  "main": "./dist/index.js",
-  "module": "./dist/esm5/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "name": "rxjs-interop",
   "optionalDependencies": {},
   "peerDependencies": {},
@@ -53,10 +55,9 @@
   },
   "scripts": {
     "dist": "yarn run dist:build && yarn run dist:copy",
-    "dist:build": "yarn run dist:clean && yarn run dist:build:cjs && yarn run dist:build:esm2015 && yarn run dist:build:esm5",
+    "dist:build": "yarn run dist:clean && yarn run dist:build:cjs && yarn run dist:build:esm",
     "dist:build:cjs": "tsc -p tsconfig-dist-cjs.json",
-    "dist:build:esm2015": "tsc -p tsconfig-dist-esm2015.json",
-    "dist:build:esm5": "tsc -p tsconfig-dist-esm5.json",
+    "dist:build:esm": "tsc -p tsconfig-dist-esm.json",
     "dist:clean": "rimraf dist",
     "dist:copy": "node scripts/pack.js && yarn run dist:copy:docs",
     "dist:copy:docs": "cpy CHANGELOG.md README.md dist/",
@@ -68,6 +69,7 @@
     "test:clean": "rimraf build"
   },
   "sideEffects": false,
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "types": "./dist/esm/index.d.ts",
   "version": "0.0.1"
 }

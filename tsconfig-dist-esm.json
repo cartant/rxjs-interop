@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "declaration": false,
-    "module": "es2015",
-    "outDir": "dist/esm2015",
+    "declaration": true,
+    "module": "esnext",
+    "outDir": "dist/esm",
     "target": "es2015"
   },
   "extends": "./tsconfig-dist-cjs.json"
