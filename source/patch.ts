@@ -3,8 +3,8 @@
  * can be found in the LICENSE file at https://github.com/cartant/rxjs-interop
  */
 
-import { observable } from "./symbols";
-import { InteropObservable } from "./types";
+import { observable } from "./symbols.js";
+import { InteropObservable } from "./types.js";
 
 export function patch<T extends InteropObservable<any>>(instance: T): T;
 export function patch<T extends new (...args: any[]) => InteropObservable<any>>(

@@ -3,7 +3,7 @@
  * can be found in the LICENSE file at https://github.com/cartant/rxjs-interop
  */
 
-import { Observer, PartialObserver } from "./types";
+import { Observer, PartialObserver } from "./types.js";
 
 const noop = () => {};
 

@@ -54,12 +54,11 @@
     "url": "https://github.com/cartant/rxjs-interop.git"
   },
   "scripts": {
-    "dist": "yarn run dist:build && yarn run dist:copy",
+    "dist": "yarn run dist:build",
     "dist:build": "yarn run dist:clean && yarn run dist:build:cjs && yarn run dist:build:esm",
     "dist:build:cjs": "tsc -p tsconfig-dist-cjs.json",
     "dist:build:esm": "tsc -p tsconfig-dist-esm.json",
     "dist:clean": "rimraf dist",
-    "dist:copy": "node scripts/pack.js && yarn run dist:copy:docs",
     "dist:copy:docs": "cpy CHANGELOG.md README.md dist/",
     "lint": "tslint --project tsconfig.json source/**/*.ts",
     "prettier": "prettier --write \"./**/{scripts,source}/**/*.{js,json,ts}\"",

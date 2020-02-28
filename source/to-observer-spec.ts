@@ -4,7 +4,7 @@
  */
 
 import { expect } from "chai";
-import { toObserver } from "./to-observer";
+import { toObserver } from "./to-observer.js";
 
 describe("toObserver", () => {
   it("should return non-partial observers", () => {

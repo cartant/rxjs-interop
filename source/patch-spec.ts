@@ -6,9 +6,9 @@
 
 import { expect } from "chai";
 import * as Rx from "rxjs";
-import { patch } from "./patch";
-import { toObserver } from "./to-observer";
-import { PartialObserver, Subscribable } from "./types";
+import { patch } from "./patch.js";
+import { toObserver } from "./to-observer.js";
+import { PartialObserver, Subscribable } from "./types.js";
 
 const subscribable: Subscribable<number> = {
   subscribe(
