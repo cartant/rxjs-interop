@@ -4,8 +4,9 @@
  */
 /*tslint:disable:no-unused-expression*/
 
-import { expect } from "chai";
-import * as Rx from "rxjs";
+import chai from "chai";
+const { expect } = chai;
+import Rx from "rxjs";
 import { patch } from "./patch.js";
 import { toObserver } from "./to-observer.js";
 import { PartialObserver, Subscribable } from "./types.js";

@@ -3,7 +3,8 @@
  * can be found in the LICENSE file at https://github.com/cartant/rxjs-interop
  */
 
-import { expect } from "chai";
+import chai from "chai";
+const { expect } = chai;
 import { toObserver } from "./to-observer.js";
 
 describe("toObserver", () => {
