@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "inlineSourceMap": true,
+    "module": "esnext",
+    "outDir": "dist/esm",
+    "target": "esnext"
+  },
+  "extends": "./tsconfig-dist-cjs.json"
+}

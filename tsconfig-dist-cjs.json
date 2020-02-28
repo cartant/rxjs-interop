@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "inlineSourceMap": false,
+    "inlineSourceMap": true,
     "module": "commonjs",
-    "outDir": "dist",
-    "target": "es5"
+    "outDir": "dist/cjs",
+    "target": "esnext"
   },
   "exclude": [
     "source/**/*-spec.ts"
