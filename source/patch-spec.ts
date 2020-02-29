@@ -23,6 +23,39 @@ const subscribable: Subscribable<number> = {
 };
 
 describe("patch", () => {
+  describe("return value", () => {
+    it("should return a passed object", () => {
+      const interop = {
+        [Symbol.observable](): Subscribable<number> {
+          return subscribable;
+        }
+      };
+      expect(patch(interop)).to.equal(interop);
+    });
+
+    it("should return a passed class", () => {
+      class Interop {
+        constructor() {
+          patch(this);
+        }
+        [Symbol.observable](): Subscribable<number> {
+          return subscribable;
+        }
+      }
+      expect(patch(Interop)).to.equal(Interop);
+    });
+
+    it("should return a passed function", () => {
+      const interop = (
+        ...args: Parameters<Subscribable<number>["subscribe"]>
+      ) => subscribable.subscribe(...args);
+      interop[Symbol.observable] = (): Subscribable<number> => {
+        return subscribable;
+      };
+      expect(patch(interop)).to.equal(interop);
+    });
+  });
+
   describe("without Symbol.observable", () => {
     beforeEach(() => {
       expect(Symbol.observable).to.be.undefined;
