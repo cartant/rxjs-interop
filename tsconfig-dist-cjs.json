@@ -1,13 +1,8 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "inlineSourceMap": true,
     "module": "commonjs",
     "outDir": "dist/cjs",
     "target": "esnext"
   },
-  "exclude": [
-    "source/**/*-spec.ts"
-  ],
-  "extends": "./tsconfig.json"
+  "extends": "./tsconfig-dist.json"
 }
