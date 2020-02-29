@@ -63,6 +63,6 @@ export const interop = patch({
 });
 ```
 
-`patch` can be passed either an interop observable instance or the constructor of an interop observable class - see the [tests](https://github.com/cartant/rxjs-interop/blob/master/source/patch-spec.ts).
+`patch` can be passed either an interop observable instance or the constructor of an interop observable class - see the [tests](https://github.com/cartant/rxjs-interop/blob/master/source/patch-spec.ts) for usage.
 
 For an example of how this package can be used to implement things that can be used with or without RxJS, check out [Christoph Guttandin](https://github.com/chrisguttandin)'s [`subscribable-things`](https://github.com/chrisguttandin/subscribable-things).
