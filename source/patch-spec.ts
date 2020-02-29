@@ -36,7 +36,7 @@ describe("patch", () => {
         }
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(42));
+      Rx.from(interop).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -50,7 +50,7 @@ describe("patch", () => {
           return subscribable;
         }
       }
-      Rx.from(new Interop()).subscribe(value => values.push(42));
+      Rx.from(new Interop()).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -62,7 +62,7 @@ describe("patch", () => {
         }
       }
       patch(Interop);
-      Rx.from(new Interop()).subscribe(value => values.push(42));
+      Rx.from(new Interop()).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -75,7 +75,7 @@ describe("patch", () => {
         return subscribable;
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(42));
+      Rx.from(interop).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
   });
@@ -96,7 +96,7 @@ describe("patch", () => {
         }
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(42));
+      Rx.from(interop).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -110,7 +110,7 @@ describe("patch", () => {
           return subscribable;
         }
       }
-      Rx.from(new Interop()).subscribe(value => values.push(42));
+      Rx.from(new Interop()).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -122,7 +122,7 @@ describe("patch", () => {
         }
       }
       patch(Interop);
-      Rx.from(new Interop()).subscribe(value => values.push(42));
+      Rx.from(new Interop()).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -135,7 +135,7 @@ describe("patch", () => {
         return subscribable;
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(42));
+      Rx.from(interop).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
