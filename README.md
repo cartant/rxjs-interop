@@ -15,6 +15,8 @@ A package that contains interop helper functions and types for use with RxJS.
 
 Observables exist independently of RxJS. There are [TC39](https://github.com/tc39/proposal-observable) and [WHATWG](https://github.com/whatwg/dom/issues/544) observable proposals. The helpers in this package make it easy to implement observables that will work with or without RxJS and will still play nice - with RxJS - if `Symbol.observable` is not configured.
 
+This package has no dependency on RxJS and is small, but if you want to publish an interop package with no dependencies, just copy the license and the code from this project into yours.
+
 ## Install
 
 Install the package using NPM:
@@ -43,7 +45,7 @@ export const interop = {
 
 For this to work with RxJS, the caller will need to initialize `Symbol.observable` - which makes things more complicated.
 
-You can use the `patch` and `toObserver` helpers in this package to more easily implement `subscribe` and to make sure that the interop observable will work with RxJS without `Symbol.observable` having to be initialized:
+You can use the `toObserver` and `patch` helpers in this package to more easily implement `subscribe` and to make sure that the interop observable will work with RxJS without `Symbol.observable` having to be initialized:
 
 ```ts
 import { patch, toObserver } from "rxjs-interop";
@@ -62,3 +64,5 @@ export const interop = patch({
 ```
 
 `patch` can be passed either an interop observable instance or the constructor of an interop observable class.
+
+For an example of how this package can be used, check out [Christoph Guttandin](https://github.com/chrisguttandin)'s [`subscribable-things`](https://github.com/chrisguttandin/subscribable-things).
