@@ -36,7 +36,7 @@ describe("patch", () => {
         }
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(42));
+      Rx.from(interop).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -50,7 +50,7 @@ describe("patch", () => {
           return subscribable;
         }
       }
-      Rx.from(new Interop()).subscribe(value => values.push(42));
+      Rx.from(new Interop()).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -62,7 +62,20 @@ describe("patch", () => {
         }
       }
       patch(Interop);
-      Rx.from(new Interop()).subscribe(value => values.push(42));
+      Rx.from(new Interop()).subscribe(value => values.push(value));
+      expect(values).to.deep.equal([42]);
+    });
+
+    it("should patch a function", () => {
+      const values: number[] = [];
+      const interop = (
+        ...args: Parameters<Subscribable<number>["subscribe"]>
+      ) => subscribable.subscribe(...args);
+      interop[Symbol.observable] = (): Subscribable<number> => {
+        return subscribable;
+      };
+      patch(interop);
+      Rx.from(interop).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
   });
@@ -83,7 +96,7 @@ describe("patch", () => {
         }
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(42));
+      Rx.from(interop).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -97,7 +110,7 @@ describe("patch", () => {
           return subscribable;
         }
       }
-      Rx.from(new Interop()).subscribe(value => values.push(42));
+      Rx.from(new Interop()).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -109,7 +122,20 @@ describe("patch", () => {
         }
       }
       patch(Interop);
-      Rx.from(new Interop()).subscribe(value => values.push(42));
+      Rx.from(new Interop()).subscribe(value => values.push(value));
+      expect(values).to.deep.equal([42]);
+    });
+
+    it("should patch a function", () => {
+      const values: number[] = [];
+      const interop = (
+        ...args: Parameters<Subscribable<number>["subscribe"]>
+      ) => subscribable.subscribe(...args);
+      interop[Symbol.observable] = (): Subscribable<number> => {
+        return subscribable;
+      };
+      patch(interop);
+      Rx.from(interop).subscribe(value => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 

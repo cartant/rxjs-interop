@@ -14,7 +14,11 @@ export function patch(
   arg: InteropObservable<any> | (new (...args: any[]) => InteropObservable<any>)
 ): InteropObservable<any> | (new (...args: any[]) => InteropObservable<any>) {
   if (!Symbol.observable) {
-    if (typeof arg === "function" && arg.prototype[Symbol.observable]) {
+    if (
+      typeof arg === "function" &&
+      arg.prototype &&
+      arg.prototype[Symbol.observable]
+    ) {
       (arg.prototype as any)[observable] = arg.prototype[Symbol.observable];
       delete arg.prototype[Symbol.observable];
     } else {
