@@ -15,6 +15,8 @@ A package that contains interop helper functions and types for use with RxJS.
 
 Observables exist independently of RxJS. There are [TC39](https://github.com/tc39/proposal-observable) and [WHATWG](https://github.com/whatwg/dom/issues/544) observable proposals. The helpers in this package make it easy to implement observables that will work with or without RxJS and will still play nice - with RxJS - if `Symbol.observable` is not configured.
 
+For more information on RxJS interop, see [this blog post](https://ncjamieson.com/how-to-use-interop-observables/).
+
 This package has no dependency on RxJS and is small, but if you want to publish an interop package with no dependencies, just copy the license and the code from this project into yours.
 
 ## Install
