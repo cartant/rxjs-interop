@@ -1,4 +1,5 @@
 build/
 node_modules/
 temp/
+yarn.lock
 yarn-error.log
