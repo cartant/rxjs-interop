@@ -19,7 +19,7 @@ const subscribable: Subscribable<number> = {
     const observer = toObserver(nextOrObserver, error, complete);
     observer.next(42);
     return { unsubscribe: () => {} };
-  }
+  },
 };
 
 describe("patch", () => {
@@ -28,7 +28,7 @@ describe("patch", () => {
       const interop = {
         [Symbol.observable](): Subscribable<number> {
           return subscribable;
-        }
+        },
       };
       expect(patch(interop)).to.equal(interop);
     });
@@ -66,10 +66,10 @@ describe("patch", () => {
       const interop = {
         [Symbol.observable](): Subscribable<number> {
           return subscribable;
-        }
+        },
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(value));
+      Rx.from(interop).subscribe((value) => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -83,7 +83,7 @@ describe("patch", () => {
           return subscribable;
         }
       }
-      Rx.from(new Interop()).subscribe(value => values.push(value));
+      Rx.from(new Interop()).subscribe((value) => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -95,7 +95,7 @@ describe("patch", () => {
         }
       }
       patch(Interop);
-      Rx.from(new Interop()).subscribe(value => values.push(value));
+      Rx.from(new Interop()).subscribe((value) => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -108,7 +108,7 @@ describe("patch", () => {
         return subscribable;
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(value));
+      Rx.from(interop).subscribe((value) => values.push(value));
       expect(values).to.deep.equal([42]);
     });
   });
@@ -126,10 +126,10 @@ describe("patch", () => {
       const interop = {
         [Symbol.observable](): Subscribable<number> {
           return subscribable;
-        }
+        },
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(value));
+      Rx.from(interop).subscribe((value) => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -143,7 +143,7 @@ describe("patch", () => {
           return subscribable;
         }
       }
-      Rx.from(new Interop()).subscribe(value => values.push(value));
+      Rx.from(new Interop()).subscribe((value) => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -155,7 +155,7 @@ describe("patch", () => {
         }
       }
       patch(Interop);
-      Rx.from(new Interop()).subscribe(value => values.push(value));
+      Rx.from(new Interop()).subscribe((value) => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 
@@ -168,7 +168,7 @@ describe("patch", () => {
         return subscribable;
       };
       patch(interop);
-      Rx.from(interop).subscribe(value => values.push(value));
+      Rx.from(interop).subscribe((value) => values.push(value));
       expect(values).to.deep.equal([42]);
     });
 

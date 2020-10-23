@@ -11,7 +11,7 @@ describe("toObserver", () => {
     const observer = {
       complete() {},
       error() {},
-      next() {}
+      next() {},
     };
     const result = toObserver(observer);
     expect(result).to.equal(observer);
@@ -19,7 +19,7 @@ describe("toObserver", () => {
 
   it("should support partial observers", () => {
     const observer = {
-      next() {}
+      next() {},
     };
     const result = toObserver(observer);
     expect(result).to.not.equal(observer);
@@ -35,7 +35,7 @@ describe("toObserver", () => {
       next(this: any, value: number) {
         receivedThis = this;
         receivedValue = value;
-      }
+      },
     };
     const result = toObserver(observer);
     expect(result).to.not.equal(observer);

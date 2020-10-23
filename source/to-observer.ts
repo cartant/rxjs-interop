@@ -23,12 +23,12 @@ export function toObserver<T>(
     return {
       complete: (nextOrObserver.complete || noop).bind(nextOrObserver),
       error: (nextOrObserver.error || noop).bind(nextOrObserver),
-      next: (nextOrObserver.next || noop).bind(nextOrObserver)
+      next: (nextOrObserver.next || noop).bind(nextOrObserver),
     };
   }
   return {
     complete: complete || noop,
     error: error || noop,
-    next: nextOrObserver || noop
+    next: nextOrObserver || noop,
   };
 }

@@ -9,18 +9,18 @@
     "@cartant/tslint-config": "^2.0.0",
     "@cartant/tslint-config-etc": "^2.0.0",
     "@types/chai": "^4.0.0",
-    "@types/mocha": "^7.0.0",
+    "@types/mocha": "^8.0.0",
     "chai": "^4.1.2",
     "cpy-cli": "^3.0.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "mocha": "^7.0.0",
-    "prettier": "^1.19.1",
+    "mocha": "^8.0.0",
+    "prettier": "^2.1.2",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.4",
     "tslint": "^6.0.0",
     "tslint-etc": "^1.5.1",
-    "typescript": "~3.8.2"
+    "typescript": "~4.0.0"
   },
   "homepage": "https://github.com/cartant/rxjs-interop",
   "husky": {
