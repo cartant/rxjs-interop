@@ -68,4 +68,17 @@ describe("toObserver", () => {
     expect(observer.error).to.be.a("function");
     expect(observer.complete).to.be.a("function");
   });
+
+  it("should throw if an error method is not specified", () => {
+    const observer = toObserver({
+      complete() {},
+      next() {},
+    });
+    expect(() => observer.error("Kaboom!")).to.throw("Kaboom!");
+  });
+
+  it("should throw if an error handler is not specified", () => {
+    const observer = toObserver(() => {});
+    expect(() => observer.error("Kaboom!")).to.throw("Kaboom!");
+  });
 });
