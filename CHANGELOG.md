@@ -1,3 +1,10 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/cartant/rxjs-interop/compare/v1.0.2...v1.0.3) (2020-12-04)
+
+### Changes
+
+* Default to rethrowing errors if an `error` handler or method is not specified. ([51a1bff](https://github.com/cartant/rxjs-interop/commit/51a1bff)).
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/cartant/rxjs-interop/compare/v1.0.1...v1.0.2) (2020-11-28)
 
