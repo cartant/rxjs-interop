@@ -1,3 +1,10 @@
+<a name="2.0.0"></a>
+## [2.0.0](https://github.com/cartant/rxjs-interop/compare/v1.0.3...v2.0.0) (2021-10-30)
+
+### Breaking Changes
+
+* Update `Subscribable` so that it's compatible with RxJS. ([0e8cee0](https://github.com/cartant/rxjs-interop/commit/0e8cee0)).
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/cartant/rxjs-interop/compare/v1.0.2...v1.0.3) (2020-12-04)
 
