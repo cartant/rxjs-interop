@@ -8,7 +8,7 @@ import { expect } from "chai";
 import * as Rx from "rxjs";
 import { patch } from "./patch";
 import { toObserver } from "./to-observer";
-import { PartialObserver, Subscribable } from "./types";
+import { InteropObservable, PartialObserver, Subscribable } from "./types";
 
 const subscribable: Subscribable<number> = {
   subscribe(
@@ -46,9 +46,12 @@ describe("patch", () => {
     });
 
     it("should return a passed function", () => {
-      const interop = (
+      const interop = ((
         ...args: Parameters<Subscribable<number>["subscribe"]>
-      ) => subscribable.subscribe(...args);
+      ) =>
+        subscribable.subscribe(
+          ...args
+        )) as unknown as InteropObservable<number>;
       interop[Symbol.observable] = (): Subscribable<number> => {
         return subscribable;
       };
@@ -101,9 +104,12 @@ describe("patch", () => {
 
     it("should patch a function", () => {
       const values: number[] = [];
-      const interop = (
+      const interop = ((
         ...args: Parameters<Subscribable<number>["subscribe"]>
-      ) => subscribable.subscribe(...args);
+      ) =>
+        subscribable.subscribe(
+          ...args
+        )) as unknown as InteropObservable<number>;
       interop[Symbol.observable] = (): Subscribable<number> => {
         return subscribable;
       };
@@ -161,9 +167,12 @@ describe("patch", () => {
 
     it("should patch a function", () => {
       const values: number[] = [];
-      const interop = (
+      const interop = ((
         ...args: Parameters<Subscribable<number>["subscribe"]>
-      ) => subscribable.subscribe(...args);
+      ) =>
+        subscribable.subscribe(
+          ...args
+        )) as unknown as InteropObservable<number>;
       interop[Symbol.observable] = (): Subscribable<number> => {
         return subscribable;
       };
