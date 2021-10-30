@@ -45,25 +45,8 @@ describe("toObserver", () => {
     expect(receivedValue).to.equal(42);
   });
 
-  it("should support separate arguments", () => {
-    const next = () => {};
-    const error = () => {};
-    const complete = () => {};
-    const observer = toObserver(next, error, complete);
-    expect(observer.next).to.equal(next);
-    expect(observer.error).to.equal(error);
-    expect(observer.complete).to.equal(complete);
-  });
-
-  it("should support undefined arguments", () => {
-    const observer = toObserver(undefined, undefined, undefined);
-    expect(observer.next).to.be.a("function");
-    expect(observer.error).to.be.a("function");
-    expect(observer.complete).to.be.a("function");
-  });
-
-  it("should support null arguments", () => {
-    const observer = toObserver(null, null, null);
+  it("should support an undefined argument", () => {
+    const observer = toObserver(undefined);
     expect(observer.next).to.be.a("function");
     expect(observer.error).to.be.a("function");
     expect(observer.complete).to.be.a("function");
@@ -74,11 +57,6 @@ describe("toObserver", () => {
       complete() {},
       next() {},
     });
-    expect(() => observer.error("Kaboom!")).to.throw("Kaboom!");
-  });
-
-  it("should throw if an error handler is not specified", () => {
-    const observer = toObserver(() => {});
     expect(() => observer.error("Kaboom!")).to.throw("Kaboom!");
   });
 });

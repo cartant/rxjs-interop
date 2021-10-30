@@ -11,28 +11,20 @@ const rethrow = (error: unknown) => {
   throw error;
 };
 
-export function toObserver<T>(
-  nextOrObserver?: PartialObserver<T> | ((value: T) => void) | null,
-  error?: ((error: any) => void) | null,
-  complete?: (() => void) | null
-): Observer<T> {
-  if (nextOrObserver && typeof nextOrObserver !== "function") {
-    if (
-      nextOrObserver.next &&
-      nextOrObserver.error &&
-      nextOrObserver.complete
-    ) {
-      return nextOrObserver as Observer<T>;
+export function toObserver<T>(observer?: PartialObserver<T>): Observer<T> {
+  if (observer) {
+    if (observer.next && observer.error && observer.complete) {
+      return observer as Observer<T>;
     }
     return {
-      complete: (nextOrObserver.complete ?? noop).bind(nextOrObserver),
-      error: (nextOrObserver.error ?? rethrow).bind(nextOrObserver),
-      next: (nextOrObserver.next ?? noop).bind(nextOrObserver),
+      complete: (observer.complete ?? noop).bind(observer),
+      error: (observer.error ?? rethrow).bind(observer),
+      next: (observer.next ?? noop).bind(observer),
     };
   }
   return {
-    complete: complete ?? noop,
-    error: error ?? rethrow,
-    next: nextOrObserver ?? noop,
+    complete: noop,
+    error: rethrow,
+    next: noop,
   };
 }

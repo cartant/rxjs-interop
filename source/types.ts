@@ -14,20 +14,10 @@ export type Observer<T> = {
   next(value: T): void;
 };
 
-export type PartialObserver<T> = Partial<Observer<T>> &
-  (
-    | { complete(): void }
-    | { error(error: any): void }
-    | { next(value: T): void }
-  );
+export type PartialObserver<T> = Partial<Observer<T>>;
 
 export type Subscribable<T> = {
   subscribe(observer?: PartialObserver<T>): Unsubscribable;
-  subscribe(
-    next?: ((value: T) => void) | null,
-    error?: ((error: any) => void) | null,
-    complete?: (() => void) | null
-  ): Unsubscribable;
 };
 
 export type Unsubscribable = {

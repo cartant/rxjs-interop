@@ -11,12 +11,8 @@ import { toObserver } from "./to-observer";
 import { InteropObservable, PartialObserver, Subscribable } from "./types";
 
 const subscribable: Subscribable<number> = {
-  subscribe(
-    nextOrObserver?: PartialObserver<number> | ((value: number) => void) | null,
-    error?: ((error: any) => void) | null,
-    complete?: (() => void) | null
-  ) {
-    const observer = toObserver(nextOrObserver, error, complete);
+  subscribe(partialObserver?: PartialObserver<number>) {
+    const observer = toObserver(partialObserver);
     observer.next(42);
     return { unsubscribe: () => {} };
   },
