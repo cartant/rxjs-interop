@@ -12,7 +12,7 @@
     "@types/mocha": "^9.0.0",
     "chai": "^4.1.2",
     "cpy-cli": "^3.0.0",
-    "husky": "^4.2.3",
+    "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
     "mocha": "^9.0.0",
     "prettier": "~2.4.0",
@@ -27,11 +27,6 @@
     "source"
   ],
   "homepage": "https://github.com/cartant/rxjs-interop",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "keywords": [
     "interop",
     "observable",
@@ -58,6 +53,7 @@
     "dist:build:esm": "tsc -p tsconfig-dist-esm.json",
     "dist:clean": "rimraf dist",
     "lint": "tslint --project tsconfig.json source/**/*.ts",
+    "prepare": "husky install",
     "prepublishOnly": "yarn run test && yarn run dist",
     "prettier": "prettier --write \"./**/{scripts,source}/**/*.{js,json,ts}\"",
     "prettier:ci": "prettier --check \"./**/{scripts,source}/**/*.{js,json,ts}\"",
