@@ -3,23 +3,24 @@
   "bugs": {
     "url": "https://github.com/cartant/rxjs-interop/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "description": "Observable interop helpers for RxJS",
   "devDependencies": {
-    "@cartant/tslint-config": "^2.0.0",
-    "@cartant/tslint-config-etc": "^2.0.0",
+    "@cartant/eslint-config": "^3.0.0",
+    "@cartant/eslint-config-etc": "^3.0.0",
     "@types/chai": "^4.0.0",
     "@types/mocha": "^9.0.0",
+    "@typescript-eslint/parser": "^5.2.0",
     "chai": "^4.1.2",
     "cpy-cli": "^3.0.0",
+    "eslint": "^8.1.0",
     "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
     "mocha": "^9.0.0",
     "prettier": "~2.4.0",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.4",
-    "tslint": "^6.0.0",
-    "tslint-etc": "^1.5.1",
     "typescript": "~4.4.2"
   },
   "files": [
@@ -52,7 +53,7 @@
     "dist:build:cjs": "tsc -p tsconfig-dist-cjs.json",
     "dist:build:esm": "tsc -p tsconfig-dist-esm.json",
     "dist:clean": "rimraf dist",
-    "lint": "tslint --project tsconfig.json source/**/*.ts",
+    "lint": "eslint \"source/**/*.{js,ts}\"",
     "prepare": "husky install",
     "prepublishOnly": "yarn run test && yarn run dist",
     "prettier": "prettier --write \"./**/{scripts,source}/**/*.{js,json,ts}\"",

@@ -2,7 +2,7 @@
  * @license Use of this source code is governed by an MIT-style license that
  * can be found in the LICENSE file at https://github.com/cartant/rxjs-interop
  */
-/*tslint:disable:no-unused-expression*/
+/* eslint-disable no-unused-expressions */
 
 import { expect } from "chai";
 import * as Rx from "rxjs";
@@ -120,7 +120,7 @@ describe("patch", () => {
   });
 
   describe("with Symbol.observable", () => {
-    let symbol: Symbol;
+    let symbol: symbol;
 
     beforeEach(() => {
       symbol = Symbol.observable;

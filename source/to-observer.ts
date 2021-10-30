@@ -7,7 +7,7 @@ import { Observer, PartialObserver } from "./types";
 
 const noop = () => {};
 const rethrow = (error: unknown) => {
-  /* tslint:disable-next-line throw-error */
+  /* eslint-disable-next-line etc/throw-error */
   throw error;
 };
 
@@ -25,14 +25,14 @@ export function toObserver<T>(
       return nextOrObserver as Observer<T>;
     }
     return {
-      complete: (nextOrObserver.complete || noop).bind(nextOrObserver),
-      error: (nextOrObserver.error || rethrow).bind(nextOrObserver),
-      next: (nextOrObserver.next || noop).bind(nextOrObserver),
+      complete: (nextOrObserver.complete ?? noop).bind(nextOrObserver),
+      error: (nextOrObserver.error ?? rethrow).bind(nextOrObserver),
+      next: (nextOrObserver.next ?? noop).bind(nextOrObserver),
     };
   }
   return {
-    complete: complete || noop,
-    error: error || rethrow,
-    next: nextOrObserver || noop,
+    complete: complete ?? noop,
+    error: error ?? rethrow,
+    next: nextOrObserver ?? noop,
   };
 }

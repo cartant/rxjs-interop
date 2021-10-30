@@ -4,7 +4,6 @@
  */
 
 declare global {
-  /*tslint:disable-next-line:no-unused-declaration*/
   interface SymbolConstructor {
     readonly observable: symbol;
   }
