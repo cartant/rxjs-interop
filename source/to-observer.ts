@@ -13,13 +13,14 @@ const rethrow = (error: unknown) => {
 
 export function toObserver<T>(observer?: PartialObserver<T>): Observer<T> {
   if (observer) {
-    if (observer.next && observer.error && observer.complete) {
+    const { complete, error, next } = observer;
+    if (complete && error && next) {
       return observer as Observer<T>;
     }
     return {
-      complete: (observer.complete ?? noop).bind(observer),
-      error: (observer.error ?? rethrow).bind(observer),
-      next: (observer.next ?? noop).bind(observer),
+      complete: (complete ?? noop).bind(observer),
+      error: (error ?? rethrow).bind(observer),
+      next: (next ?? noop).bind(observer),
     };
   }
   return {
